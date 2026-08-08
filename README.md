@@ -4,6 +4,9 @@
   <p><strong>An accessibility-focused, performance-optimized, and motion-enhanced conceptual NGO frontend prototype.</strong></p>
 
   <p>
+    <a href="https://iaf-redesign.vercel.app/" target="_blank">
+      <img src="https://img.shields.io/badge/Live%20Demo-iaf--redesign.vercel.app-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo on Vercel" />
+    </a>
     <a href="https://stitch.withgoogle.com/projects/14655895570667469697" target="_blank">
       <img src="https://img.shields.io/badge/Google%20Stitch-Design%20System-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="Google Stitch Design System" />
     </a>
@@ -233,15 +236,15 @@ Runs **Oxlint** for ultra-fast TypeScript and React code linting.
 
 ## 🌐 Deployment to Vercel
 
-This repository is optimized for one-click deployment on **Vercel**:
+The application is deployed live on **Vercel**:
 
-1. Push your changes to GitHub.
-2. Import `himanshu-jadhav108/IAF-Redesign` into Vercel Dashboard.
-3. Configure Build Settings:
-   - **Framework Preset**: `Vite`
-   - **Build Command**: `npm run build`
-   - **Output Directory**: `dist`
-4. Deploy! Client-side routing is handled automatically.
+- 🔗 **Live Web Application**: [https://iaf-redesign.vercel.app/](https://iaf-redesign.vercel.app/)
+
+### Continuous Deployment Settings:
+1. Connected to GitHub repository `himanshu-jadhav108/IAF-Redesign`.
+2. Build Command: `npm run build`
+3. Output Directory: `dist`
+4. Automatic deployment on push to `main`.
 
 ---
 

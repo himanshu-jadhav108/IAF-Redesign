@@ -141,14 +141,14 @@ export const Home: React.FC = () => {
                 </div>
               </div>
 
-              {/* Floating Trust Badge Overlay */}
-              <div className="absolute -bottom-6 -left-6 bg-white dark:bg-slate-800 text-[#001E40] dark:text-white p-4 rounded-2xl shadow-xl border border-[#E1E3E4] dark:border-slate-700 hidden sm:flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-[#006E25]/10 dark:bg-emerald-500/20 flex items-center justify-center text-[#006E25] dark:text-emerald-400">
-                  <CheckCircle2 className="w-6 h-6" />
+              {/* Floating Trust Badge Overlay in Top Right */}
+              <div className="absolute top-4 right-4 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md text-[#001E40] dark:text-white p-3 rounded-2xl shadow-lg border border-white/30 dark:border-slate-700 flex items-center gap-2.5 z-10">
+                <div className="w-8 h-8 rounded-full bg-[#006E25]/10 dark:bg-emerald-500/20 flex items-center justify-center text-[#006E25] dark:text-emerald-400 shrink-0">
+                  <CheckCircle2 className="w-5 h-5" />
                 </div>
                 <div className="flex flex-col text-left">
-                  <span className="text-xs font-extrabold text-[#003366] dark:text-sky-400">NITI Aayog Registered</span>
-                  <span className="text-[11px] text-[#737780] dark:text-slate-400">CT/2021/0278451</span>
+                  <span className="text-[11px] font-extrabold text-[#003366] dark:text-sky-300 leading-tight">NITI Aayog Registered</span>
+                  <span className="text-[10px] text-[#737780] dark:text-slate-300 font-mono">CT/2021/0278451</span>
                 </div>
               </div>
             </motion.div>

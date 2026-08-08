@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { Heart, Menu, X, ShieldCheck, Sun, Moon } from 'lucide-react';
+import iafLogo from '@/assets/iaf_logo.png';
 import { Button } from '@/components/ui/Button';
 import { useTheme } from '@/context/ThemeContext';
 
@@ -80,8 +81,8 @@ export const Navbar: React.FC = () => {
             to="/"
             className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-[#003366] dark:focus:ring-sky-400 rounded-xl p-1"
           >
-            <div className="w-10 h-10 rounded-xl bg-linear-to-tr from-[#003366] to-[#006E25] flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
-              <Heart className="w-6 h-6 text-white fill-white/20" />
+            <div className="w-10 h-10 rounded-xl bg-white dark:bg-slate-800 p-1 flex items-center justify-center shadow-md group-hover:scale-105 transition-transform border border-[#E1E3E4] dark:border-slate-700">
+              <img src={iafLogo} alt="InAmigos Foundation Emblem" className="w-full h-full object-contain" />
             </div>
             <div className="flex flex-col text-left">
               <span className="text-lg font-extrabold text-[#001E40] dark:text-white tracking-tight leading-none">

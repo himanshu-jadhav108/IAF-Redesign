@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Heart, Mail, Phone, MapPin, ShieldCheck } from 'lucide-react';
+import { Mail, Phone, MapPin, ShieldCheck } from 'lucide-react';
+import iafLogo from '@/assets/iaf_logo.png';
 import { organizationData } from '@/data/organizationData';
 
 export const Footer: React.FC = () => {
@@ -14,8 +15,8 @@ export const Footer: React.FC = () => {
           {/* Col 1: Brand & Mission (2 cols wide on desktop) */}
           <div className="lg:col-span-2 flex flex-col gap-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-linear-to-tr from-emerald-500 to-green-600 flex items-center justify-center text-white shadow-md">
-                <Heart className="w-6 h-6 fill-white/20" />
+              <div className="w-10 h-10 rounded-xl bg-white p-1 flex items-center justify-center shadow-md">
+                <img src={iafLogo} alt="InAmigos Foundation Emblem" className="w-full h-full object-contain" />
               </div>
               <div className="flex flex-col">
                 <span className="text-xl font-extrabold text-white tracking-tight">
