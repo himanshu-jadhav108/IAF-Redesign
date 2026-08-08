@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { motion, useReducedMotion } from 'framer-motion';
 import { Utensils, GraduationCap, HeartHandshake, Sparkles, Trees, Briefcase, ArrowRight } from 'lucide-react';
 import type { Program } from '@/data/programsData';
 import { Button } from '@/components/ui/Button';
@@ -14,14 +15,20 @@ const iconMap: Record<string, React.ReactNode> = {
 };
 
 export const ProgramCard: React.FC<{ program: Program }> = ({ program }) => {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
-    <div className="bg-white dark:bg-slate-800 border border-[#E1E3E4] dark:border-slate-700 rounded-2xl overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col group hover:-translate-y-1">
+    <motion.div
+      whileHover={shouldReduceMotion ? undefined : { y: -5 }}
+      transition={{ duration: 0.25, ease: 'easeOut' }}
+      className="bg-white dark:bg-slate-800 border border-[#E1E3E4] dark:border-slate-700 rounded-2xl overflow-hidden shadow-xs hover:shadow-xl transition-shadow duration-300 flex flex-col group h-full"
+    >
       {/* Image with Accent Badge */}
       <div className="relative h-48 sm:h-56 w-full overflow-hidden bg-slate-100 dark:bg-slate-900">
         <img
           src={program.imageUrl}
           alt={program.name}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500"
           loading="lazy"
         />
         <div className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent to-transparent" />
@@ -35,7 +42,7 @@ export const ProgramCard: React.FC<{ program: Program }> = ({ program }) => {
         <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
           <div className="flex items-center gap-2 text-left">
             <div
-              className="w-10 h-10 rounded-xl flex items-center justify-center text-white shadow-md shrink-0"
+              className="w-10 h-10 rounded-xl flex items-center justify-center text-white shadow-md shrink-0 group-hover:scale-105 transition-transform"
               style={{ backgroundColor: program.accentColor }}
             >
               {iconMap[program.iconName] || <HeartHandshake className="w-6 h-6" />}
@@ -73,6 +80,6 @@ export const ProgramCard: React.FC<{ program: Program }> = ({ program }) => {
           </NavLink>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };

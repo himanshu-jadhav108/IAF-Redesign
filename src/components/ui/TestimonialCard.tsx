@@ -1,10 +1,17 @@
 import React from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
 import { Quote, CheckCircle2 } from 'lucide-react';
 import type { Testimonial } from '@/data/testimonialsData';
 
 export const TestimonialCard: React.FC<{ testimonial: Testimonial }> = ({ testimonial }) => {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
-    <div className="bg-white dark:bg-slate-800 border border-[#E1E3E4] dark:border-slate-700 p-6 rounded-2xl shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between gap-4 relative">
+    <motion.div
+      whileHover={shouldReduceMotion ? undefined : { y: -4 }}
+      transition={{ duration: 0.25, ease: 'easeOut' }}
+      className="bg-white dark:bg-slate-800 border border-[#E1E3E4] dark:border-slate-700 p-6 rounded-2xl shadow-xs hover:shadow-md transition-shadow duration-300 flex flex-col justify-between gap-4 relative h-full"
+    >
       <Quote className="w-8 h-8 text-[#003366]/20 dark:text-sky-400/20 absolute top-4 right-4" />
       
       <p className="text-sm text-[#191C1D] dark:text-slate-200 italic leading-relaxed relative z-10 text-left">
@@ -29,6 +36,6 @@ export const TestimonialCard: React.FC<{ testimonial: Testimonial }> = ({ testim
           <span className="text-[11px] text-[#737780] dark:text-slate-400 truncate">{testimonial.location}</span>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };

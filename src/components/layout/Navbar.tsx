@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { Heart, Menu, X, ShieldCheck, Sun, Moon } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { useTheme } from '@/context/ThemeContext';
@@ -9,6 +10,7 @@ export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
   const { theme, toggleTheme } = useTheme();
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -66,7 +68,7 @@ export const Navbar: React.FC = () => {
       <nav
         className={`w-full transition-all duration-300 ${
           isScrolled
-            ? 'glass-nav shadow-xs py-3'
+            ? 'glass-nav shadow-md py-3'
             : 'bg-white/95 dark:bg-slate-900/95 backdrop-blur-md py-4 border-b border-[#E1E3E4] dark:border-slate-800'
         }`}
         aria-label="Main Navigation"
@@ -122,15 +124,26 @@ export const Navbar: React.FC = () => {
           {/* Action CTAs + Theme Toggle */}
           <div className="hidden sm:flex items-center gap-3">
             {/* Theme Toggle Button */}
-            <button
+            <motion.button
+              whileTap={shouldReduceMotion ? undefined : { scale: 0.9, rotate: 15 }}
               type="button"
               onClick={toggleTheme}
               className="p-2.5 rounded-full bg-[#F8F9FA] dark:bg-slate-800 border border-[#E1E3E4] dark:border-slate-700 text-[#003366] dark:text-amber-300 hover:bg-[#E1E3E4] dark:hover:bg-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-[#003366] dark:focus:ring-amber-300"
               aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
               title={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
             >
-              {theme === 'light' ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
-            </button>
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.div
+                  key={theme}
+                  initial={shouldReduceMotion ? undefined : { opacity: 0, rotate: -30 }}
+                  animate={shouldReduceMotion ? undefined : { opacity: 1, rotate: 0 }}
+                  exit={shouldReduceMotion ? undefined : { opacity: 0, rotate: 30 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {theme === 'light' ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
+                </motion.div>
+              </AnimatePresence>
+            </motion.button>
 
             <NavLink to="/volunteer">
               <Button variant="outline" size="sm">
@@ -152,14 +165,15 @@ export const Navbar: React.FC = () => {
           {/* Mobile Navigation Controls */}
           <div className="flex items-center sm:hidden gap-2">
             {/* Theme Toggle for Mobile */}
-            <button
+            <motion.button
+              whileTap={shouldReduceMotion ? undefined : { scale: 0.9 }}
               type="button"
               onClick={toggleTheme}
               className="p-2 rounded-full bg-[#F8F9FA] dark:bg-slate-800 border border-[#E1E3E4] dark:border-slate-700 text-[#003366] dark:text-amber-300"
               aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
             >
               {theme === 'light' ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
-            </button>
+            </motion.button>
 
             <NavLink to="/donate">
               <Button variant="primary" size="sm">
@@ -180,44 +194,52 @@ export const Navbar: React.FC = () => {
         </div>
 
         {/* Mobile Dropdown Drawer */}
-        {isMenuOpen && (
-          <div className="lg:hidden w-full bg-white dark:bg-slate-900 border-b border-[#E1E3E4] dark:border-slate-800 px-4 pt-3 pb-6 shadow-xl animate-in slide-in-from-top-4 duration-200">
-            <div className="flex flex-col gap-1 text-left">
-              {navItems.map((item) => (
-                <NavLink
-                  key={item.path}
-                  to={item.path}
-                  className={({ isActive }) =>
-                    `px-4 py-3 text-sm font-semibold rounded-xl transition-colors flex items-center justify-between ${
-                      isActive
-                        ? 'bg-[#003366] dark:bg-sky-500 text-white'
-                        : 'text-[#191C1D] dark:text-slate-200 hover:bg-[#F8F9FA] dark:hover:bg-slate-800'
-                    }`
-                  }
-                >
-                  {item.label}
-                </NavLink>
-              ))}
-            </div>
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={shouldReduceMotion ? { opacity: 0 } : { height: 0, opacity: 0 }}
+              animate={shouldReduceMotion ? { opacity: 1 } : { height: 'auto', opacity: 1 }}
+              exit={shouldReduceMotion ? { opacity: 0 } : { height: 0, opacity: 0 }}
+              transition={{ duration: 0.25, ease: 'easeOut' }}
+              className="lg:hidden w-full bg-white dark:bg-slate-900 border-b border-[#E1E3E4] dark:border-slate-800 px-4 pt-3 pb-6 shadow-xl overflow-hidden"
+            >
+              <div className="flex flex-col gap-1 text-left">
+                {navItems.map((item) => (
+                  <NavLink
+                    key={item.path}
+                    to={item.path}
+                    className={({ isActive }) =>
+                      `px-4 py-3 text-sm font-semibold rounded-xl transition-colors flex items-center justify-between ${
+                        isActive
+                          ? 'bg-[#003366] dark:bg-sky-500 text-white'
+                          : 'text-[#191C1D] dark:text-slate-200 hover:bg-[#F8F9FA] dark:hover:bg-slate-800'
+                      }`
+                    }
+                  >
+                    {item.label}
+                  </NavLink>
+                ))}
+              </div>
 
-            <div className="mt-4 pt-4 border-t border-[#E1E3E4] dark:border-slate-800 flex flex-col gap-2">
-              <NavLink to="/volunteer" className="w-full">
-                <Button variant="outline" fullWidth>
-                  Become a Volunteer
-                </Button>
-              </NavLink>
-              <NavLink to="/donate" className="w-full">
-                <Button
-                  variant="primary"
-                  fullWidth
-                  icon={<Heart className="w-4 h-4 fill-white" />}
-                >
-                  Make a Donation
-                </Button>
-              </NavLink>
-            </div>
-          </div>
-        )}
+              <div className="mt-4 pt-4 border-t border-[#E1E3E4] dark:border-slate-800 flex flex-col gap-2">
+                <NavLink to="/volunteer" className="w-full">
+                  <Button variant="outline" fullWidth>
+                    Become a Volunteer
+                  </Button>
+                </NavLink>
+                <NavLink to="/donate" className="w-full">
+                  <Button
+                    variant="primary"
+                    fullWidth
+                    icon={<Heart className="w-4 h-4 fill-white" />}
+                  >
+                    Make a Donation
+                  </Button>
+                </NavLink>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
     </header>
   );

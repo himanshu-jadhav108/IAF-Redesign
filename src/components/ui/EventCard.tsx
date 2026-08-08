@@ -1,18 +1,25 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { motion, useReducedMotion } from 'framer-motion';
 import { Calendar, Clock, MapPin, ArrowRight } from 'lucide-react';
 import type { EventItem } from '@/data/eventsData';
 import { Button } from '@/components/ui/Button';
 
 export const EventCard: React.FC<{ event: EventItem }> = ({ event }) => {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
-    <div className="bg-white dark:bg-slate-800 border border-[#E1E3E4] dark:border-slate-700 rounded-2xl overflow-hidden shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col group">
+    <motion.div
+      whileHover={shouldReduceMotion ? undefined : { y: -4 }}
+      transition={{ duration: 0.25, ease: 'easeOut' }}
+      className="bg-white dark:bg-slate-800 border border-[#E1E3E4] dark:border-slate-700 rounded-2xl overflow-hidden shadow-xs hover:shadow-lg transition-shadow duration-300 flex flex-col group h-full"
+    >
       {/* Event Header Image */}
       <div className="relative h-44 w-full overflow-hidden bg-slate-100 dark:bg-slate-900">
         <img
           src={event.imageUrl}
           alt={event.title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500"
           loading="lazy"
         />
         <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
@@ -76,6 +83,6 @@ export const EventCard: React.FC<{ event: EventItem }> = ({ event }) => {
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
