@@ -115,7 +115,6 @@ export const AIAssistant: React.FC = () => {
       };
     }
 
-    // Default Fallback matching NGO knowledge
     return {
       id: `ai-${Date.now()}`,
       sender: 'ai',
@@ -133,7 +132,7 @@ export const AIAssistant: React.FC = () => {
       {/* Floating Trigger Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-40 bg-linear-to-r from-[#003366] to-[#006E25] text-white p-4 rounded-full shadow-2xl hover:scale-105 transition-transform flex items-center gap-2.5 focus:outline-none focus:ring-4 focus:ring-[#003366]/40 border border-white/20"
+        className="fixed bottom-6 right-6 z-40 bg-linear-to-r from-[#003366] to-[#006E25] dark:from-sky-600 dark:to-emerald-600 text-white p-4 rounded-full shadow-2xl hover:scale-105 transition-transform flex items-center gap-2.5 focus:outline-none focus:ring-4 focus:ring-[#003366]/40 dark:focus:ring-sky-400/40 border border-white/20"
         aria-label="Open AI Impact Assistant"
       >
         <Sparkles className="w-5 h-5 text-amber-300 animate-pulse" />
@@ -142,14 +141,14 @@ export const AIAssistant: React.FC = () => {
 
       {/* Slide-over Drawer / Modal */}
       {isOpen && (
-        <div className="fixed inset-y-0 right-0 z-50 w-full sm:w-105 bg-white shadow-2xl border-l border-[#E1E3E4] flex flex-col animate-in slide-in-from-right duration-300">
+        <div className="fixed inset-y-0 right-0 z-50 w-full sm:w-105 bg-white dark:bg-slate-900 shadow-2xl border-l border-[#E1E3E4] dark:border-slate-800 flex flex-col animate-in slide-in-from-right duration-300">
           {/* Assistant Header */}
-          <div className="bg-[#001E40] text-white p-4 flex items-center justify-between border-b border-[#003366]">
+          <div className="bg-[#001E40] dark:bg-slate-950 text-white p-4 flex items-center justify-between border-b border-[#003366] dark:border-slate-800">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-full bg-[#FF8C00] flex items-center justify-center text-white shadow-sm">
+              <div className="w-9 h-9 rounded-full bg-[#FF8C00] dark:bg-orange-500 flex items-center justify-center text-white shadow-xs">
                 <Bot className="w-5 h-5" />
               </div>
-              <div>
+              <div className="text-left">
                 <h3 className="text-sm font-bold flex items-center gap-1.5">
                   AI Impact Assistant
                   <span className="text-[9px] bg-emerald-500/30 text-emerald-300 font-bold px-1.5 py-0.5 rounded-full border border-emerald-400/30">
@@ -168,8 +167,8 @@ export const AIAssistant: React.FC = () => {
           </div>
 
           {/* Subheader Notice */}
-          <div className="bg-[#F8F9FA] px-4 py-2 border-b border-[#E1E3E4] text-[11px] text-[#43474F] flex items-center gap-1.5">
-            <ShieldCheck className="w-3.5 h-3.5 text-[#006E25]" />
+          <div className="bg-[#F8F9FA] dark:bg-slate-850 px-4 py-2 border-b border-[#E1E3E4] dark:border-slate-800 text-[11px] text-[#43474F] dark:text-slate-300 flex items-center gap-1.5">
+            <ShieldCheck className="w-3.5 h-3.5 text-[#006E25] dark:text-emerald-400" />
             <span>Answers generated using verified Section 8 NGO audit records.</span>
           </div>
 
@@ -183,21 +182,21 @@ export const AIAssistant: React.FC = () => {
                 }`}
               >
                 <div
-                  className={`p-3.5 rounded-2xl text-xs leading-relaxed ${
+                  className={`p-3.5 rounded-2xl text-xs leading-relaxed text-left ${
                     msg.sender === 'user'
-                      ? 'bg-[#003366] text-white rounded-br-xs shadow-xs'
-                      : 'bg-[#F8F9FA] text-[#191C1D] border border-[#E1E3E4] rounded-bl-xs'
+                      ? 'bg-[#003366] dark:bg-sky-600 text-white rounded-br-xs shadow-xs'
+                      : 'bg-[#F8F9FA] dark:bg-slate-800 text-[#191C1D] dark:text-slate-100 border border-[#E1E3E4] dark:border-slate-700 rounded-bl-xs'
                   }`}
                 >
                   {msg.text}
 
                   {msg.quickActions && (
-                    <div className="mt-3 flex flex-wrap gap-1.5 pt-2 border-t border-slate-200">
+                    <div className="mt-3 flex flex-wrap gap-1.5 pt-2 border-t border-slate-200 dark:border-slate-700">
                       {msg.quickActions.map((qa, i) => (
                         <a
                           key={i}
                           href={qa.link}
-                          className="inline-flex items-center gap-1 text-[11px] font-bold text-[#003366] bg-white px-2.5 py-1 rounded-full border border-[#003366]/20 hover:bg-[#003366] hover:text-white transition-colors"
+                          className="inline-flex items-center gap-1 text-[11px] font-bold text-[#003366] dark:text-sky-300 bg-white dark:bg-slate-700 px-2.5 py-1 rounded-full border border-[#003366]/20 dark:border-sky-400/30 hover:bg-[#003366] hover:text-white dark:hover:bg-sky-500 dark:hover:text-white transition-colors"
                         >
                           <span>{qa.label}</span>
                           <ArrowRight className="w-3 h-3" />
@@ -206,29 +205,29 @@ export const AIAssistant: React.FC = () => {
                     </div>
                   )}
                 </div>
-                <span className="text-[10px] text-[#737780] px-1">{msg.timestamp}</span>
+                <span className="text-[10px] text-[#737780] dark:text-slate-400 px-1">{msg.timestamp}</span>
               </div>
             ))}
 
             {isTyping && (
-              <div className="self-start bg-[#F8F9FA] p-3 rounded-2xl border border-[#E1E3E4] flex items-center gap-1.5">
-                <span className="w-2 h-2 bg-[#003366] rounded-full animate-bounce" />
-                <span className="w-2 h-2 bg-[#003366] rounded-full animate-bounce [animation-delay:0.2s]" />
-                <span className="w-2 h-2 bg-[#003366] rounded-full animate-bounce [animation-delay:0.4s]" />
+              <div className="self-start bg-[#F8F9FA] dark:bg-slate-800 p-3 rounded-2xl border border-[#E1E3E4] dark:border-slate-700 flex items-center gap-1.5">
+                <span className="w-2 h-2 bg-[#003366] dark:bg-sky-400 rounded-full animate-bounce" />
+                <span className="w-2 h-2 bg-[#003366] dark:bg-sky-400 rounded-full animate-bounce [animation-delay:0.2s]" />
+                <span className="w-2 h-2 bg-[#003366] dark:bg-sky-400 rounded-full animate-bounce [animation-delay:0.4s]" />
               </div>
             )}
           </div>
 
           {/* Quick Prompts */}
-          <div className="p-3 bg-[#F8F9FA] border-t border-[#E1E3E4] flex flex-wrap gap-1.5">
-            <span className="text-[10px] font-bold text-[#737780] w-full flex items-center gap-1">
-              <HelpCircle className="w-3 h-3 text-[#003366]" /> Suggested Questions:
+          <div className="p-3 bg-[#F8F9FA] dark:bg-slate-900 border-t border-[#E1E3E4] dark:border-slate-800 flex flex-wrap gap-1.5">
+            <span className="text-[10px] font-bold text-[#737780] dark:text-slate-400 w-full flex items-center gap-1">
+              <HelpCircle className="w-3 h-3 text-[#003366] dark:text-sky-400" /> Suggested Questions:
             </span>
             {suggestedQuestions.map((q, idx) => (
               <button
                 key={idx}
                 onClick={() => handleSend(q)}
-                className="text-[11px] bg-white text-[#003366] border border-[#C3C6D1] px-2.5 py-1 rounded-full hover:border-[#003366] hover:bg-[#003366]/5 text-left transition-colors truncate max-w-full"
+                className="text-[11px] bg-white dark:bg-slate-800 text-[#003366] dark:text-sky-300 border border-[#C3C6D1] dark:border-slate-700 px-2.5 py-1 rounded-full hover:border-[#003366] dark:hover:border-sky-400 hover:bg-[#003366]/5 dark:hover:bg-slate-700 text-left transition-colors truncate max-w-full"
               >
                 {q}
               </button>
@@ -241,14 +240,14 @@ export const AIAssistant: React.FC = () => {
               e.preventDefault();
               handleSend();
             }}
-            className="p-3 bg-white border-t border-[#E1E3E4] flex items-center gap-2"
+            className="p-3 bg-white dark:bg-slate-900 border-t border-[#E1E3E4] dark:border-slate-800 flex items-center gap-2"
           >
             <input
               type="text"
               value={inputQuery}
               onChange={(e) => setInputQuery(e.target.value)}
               placeholder="Ask AI about programs, 80G tax receipts..."
-              className="flex-1 px-3.5 py-2.5 text-xs bg-[#F8F9FA] border border-[#C3C6D1] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#003366]"
+              className="flex-1 px-3.5 py-2.5 text-xs bg-[#F8F9FA] dark:bg-slate-800 border border-[#C3C6D1] dark:border-slate-700 text-[#191C1D] dark:text-slate-100 placeholder:text-[#737780] dark:placeholder:text-slate-500 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#003366] dark:focus:ring-sky-400"
             />
             <Button type="submit" variant="primary" size="sm" icon={<Send className="w-3.5 h-3.5" />}>
               Send

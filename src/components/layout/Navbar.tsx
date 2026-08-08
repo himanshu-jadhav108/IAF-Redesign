@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { Heart, Menu, X, ShieldCheck } from 'lucide-react';
+import { Heart, Menu, X, ShieldCheck, Sun, Moon } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
+import { useTheme } from '@/context/ThemeContext';
 
 export const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,7 +39,7 @@ export const Navbar: React.FC = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full transition-all duration-200">
+    <header className="sticky top-0 z-50 w-full transition-colors duration-200">
       {/* Top Banner: Prototype & Compliance Notice */}
       <div className="bg-[#001E40] text-white px-4 py-1.5 text-xs text-center font-medium flex flex-wrap justify-between items-center gap-2 border-b border-white/10">
         <div className="flex items-center gap-2 mx-auto md:mx-0">
@@ -64,8 +66,8 @@ export const Navbar: React.FC = () => {
       <nav
         className={`w-full transition-all duration-300 ${
           isScrolled
-            ? 'glass-nav shadow-sm py-3'
-            : 'bg-white/95 backdrop-blur-md py-4 border-b border-[#E1E3E4]'
+            ? 'glass-nav shadow-xs py-3'
+            : 'bg-white/95 dark:bg-slate-900/95 backdrop-blur-md py-4 border-b border-[#E1E3E4] dark:border-slate-800'
         }`}
         aria-label="Main Navigation"
       >
@@ -74,23 +76,23 @@ export const Navbar: React.FC = () => {
           {/* Logo & Brand Name */}
           <NavLink
             to="/"
-            className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-[#003366] rounded-xl p-1"
+            className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-[#003366] dark:focus:ring-sky-400 rounded-xl p-1"
           >
             <div className="w-10 h-10 rounded-xl bg-linear-to-tr from-[#003366] to-[#006E25] flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
               <Heart className="w-6 h-6 text-white fill-white/20" />
             </div>
-            <div className="flex flex-col">
-              <span className="text-lg font-extrabold text-[#001E40] tracking-tight leading-none">
+            <div className="flex flex-col text-left">
+              <span className="text-lg font-extrabold text-[#001E40] dark:text-white tracking-tight leading-none">
                 InAmigos
               </span>
-              <span className="text-[11px] font-semibold text-[#006E25] tracking-wide uppercase mt-0.5">
+              <span className="text-[11px] font-semibold text-[#006E25] dark:text-emerald-400 tracking-wide uppercase mt-0.5">
                 Foundation
               </span>
             </div>
           </NavLink>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden lg:flex items-center gap-1 bg-[#F8F9FA] p-1.5 rounded-full border border-[#E1E3E4]">
+          <div className="hidden lg:flex items-center gap-1 bg-[#F8F9FA] dark:bg-slate-800/80 p-1.5 rounded-full border border-[#E1E3E4] dark:border-slate-700">
             {navItems.map((item) => (
               <NavLink
                 key={item.path}
@@ -98,8 +100,8 @@ export const Navbar: React.FC = () => {
                 className={({ isActive }) =>
                   `px-4 py-2 text-xs font-semibold rounded-full transition-all duration-150 relative ${
                     isActive
-                      ? 'bg-[#003366] text-white shadow-sm'
-                      : 'text-[#43474F] hover:text-[#001E40] hover:bg-white'
+                      ? 'bg-[#003366] dark:bg-sky-500 text-white shadow-xs'
+                      : 'text-[#43474F] dark:text-slate-300 hover:text-[#001E40] dark:hover:text-white hover:bg-white dark:hover:bg-slate-700'
                   }`
                 }
               >
@@ -107,10 +109,7 @@ export const Navbar: React.FC = () => {
                   <>
                     <span>{item.label}</span>
                     {isActive && (
-                      <span
-                        className="sr-only"
-                        aria-current="page"
-                      >
+                      <span className="sr-only" aria-current="page">
                         (Current Page)
                       </span>
                     )}
@@ -120,8 +119,19 @@ export const Navbar: React.FC = () => {
             ))}
           </div>
 
-          {/* Action CTAs */}
+          {/* Action CTAs + Theme Toggle */}
           <div className="hidden sm:flex items-center gap-3">
+            {/* Theme Toggle Button */}
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className="p-2.5 rounded-full bg-[#F8F9FA] dark:bg-slate-800 border border-[#E1E3E4] dark:border-slate-700 text-[#003366] dark:text-amber-300 hover:bg-[#E1E3E4] dark:hover:bg-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-[#003366] dark:focus:ring-amber-300"
+              aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
+              title={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
+            >
+              {theme === 'light' ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
+            </button>
+
             <NavLink to="/volunteer">
               <Button variant="outline" size="sm">
                 Volunteer
@@ -139,8 +149,18 @@ export const Navbar: React.FC = () => {
             </NavLink>
           </div>
 
-          {/* Mobile Menu Toggle Button */}
+          {/* Mobile Navigation Controls */}
           <div className="flex items-center sm:hidden gap-2">
+            {/* Theme Toggle for Mobile */}
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className="p-2 rounded-full bg-[#F8F9FA] dark:bg-slate-800 border border-[#E1E3E4] dark:border-slate-700 text-[#003366] dark:text-amber-300"
+              aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
+            >
+              {theme === 'light' ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
+            </button>
+
             <NavLink to="/donate">
               <Button variant="primary" size="sm">
                 Donate
@@ -150,7 +170,7 @@ export const Navbar: React.FC = () => {
             <button
               type="button"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2.5 rounded-xl text-[#001E40] hover:bg-[#F8F9FA] focus:outline-none focus:ring-2 focus:ring-[#003366]"
+              className="p-2 rounded-xl text-[#001E40] dark:text-white hover:bg-[#F8F9FA] dark:hover:bg-slate-800 focus:outline-none"
               aria-expanded={isMenuOpen}
               aria-label="Toggle Navigation Menu"
             >
@@ -161,8 +181,8 @@ export const Navbar: React.FC = () => {
 
         {/* Mobile Dropdown Drawer */}
         {isMenuOpen && (
-          <div className="lg:hidden w-full bg-white border-b border-[#E1E3E4] px-4 pt-3 pb-6 shadow-xl animate-in slide-in-from-top-4 duration-200">
-            <div className="flex flex-col gap-1">
+          <div className="lg:hidden w-full bg-white dark:bg-slate-900 border-b border-[#E1E3E4] dark:border-slate-800 px-4 pt-3 pb-6 shadow-xl animate-in slide-in-from-top-4 duration-200">
+            <div className="flex flex-col gap-1 text-left">
               {navItems.map((item) => (
                 <NavLink
                   key={item.path}
@@ -170,8 +190,8 @@ export const Navbar: React.FC = () => {
                   className={({ isActive }) =>
                     `px-4 py-3 text-sm font-semibold rounded-xl transition-colors flex items-center justify-between ${
                       isActive
-                        ? 'bg-[#003366] text-white'
-                        : 'text-[#191C1D] hover:bg-[#F8F9FA]'
+                        ? 'bg-[#003366] dark:bg-sky-500 text-white'
+                        : 'text-[#191C1D] dark:text-slate-200 hover:bg-[#F8F9FA] dark:hover:bg-slate-800'
                     }`
                   }
                 >
@@ -180,7 +200,7 @@ export const Navbar: React.FC = () => {
               ))}
             </div>
 
-            <div className="mt-4 pt-4 border-t border-[#E1E3E4] flex flex-col gap-2">
+            <div className="mt-4 pt-4 border-t border-[#E1E3E4] dark:border-slate-800 flex flex-col gap-2">
               <NavLink to="/volunteer" className="w-full">
                 <Button variant="outline" fullWidth>
                   Become a Volunteer

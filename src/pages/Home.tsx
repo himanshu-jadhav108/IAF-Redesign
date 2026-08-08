@@ -14,9 +14,9 @@ import { galleryData } from '@/data/galleryData';
 
 export const Home: React.FC = () => {
   return (
-    <div className="flex flex-col w-full">
-      {/* 1. HERO SECTION (Solves Audit Finding #3 & #6) */}
-      <section className="relative w-full bg-linear-to-b from-[#001E40] via-[#003366] to-[#001E40] text-white pt-12 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <div className="flex flex-col w-full bg-[#F8F9FA] dark:bg-slate-900 transition-colors">
+      {/* 1. HERO SECTION */}
+      <section className="relative w-full bg-linear-to-b from-[#001E40] via-[#003366] to-[#001E40] dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 text-white pt-12 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
         {/* Background Subtle Geometric Accents */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
@@ -30,15 +30,15 @@ export const Home: React.FC = () => {
             </span>
 
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.15]">
-              Serving Humanity with <span className="text-[#FF8C00]">Compassion</span> & Ground Action.
+              Serving Humanity with <span className="text-[#FF8C00] dark:text-amber-400">Compassion</span> & Ground Action.
             </h1>
 
-            <p className="text-base sm:text-lg text-slate-200 leading-relaxed font-normal max-w-2xl">
+            <p className="text-base sm:text-lg text-slate-200 dark:text-slate-300 leading-relaxed font-normal max-w-2xl">
               InAmigos Foundation empowers vulnerable communities across India through six flagship causes: food security, child education, animal welfare, women's health, environmental action, and youth skills.
             </p>
 
-            {/* Sub-Program Pill Context Strip (Solves Audit finding #3) */}
-            <div className="w-full bg-white/10 backdrop-blur-md p-3 rounded-2xl border border-white/15">
+            {/* Sub-Program Pill Context Strip */}
+            <div className="w-full bg-white/10 dark:bg-slate-800/60 backdrop-blur-md p-3 rounded-2xl border border-white/15 dark:border-slate-700">
               <span className="text-xs font-bold text-slate-300 uppercase tracking-wider block mb-2">
                 Our 6 Flagship Initiatives:
               </span>
@@ -52,7 +52,7 @@ export const Home: React.FC = () => {
               </div>
             </div>
 
-            {/* CTAs with Distinct Visual Hierarchy (Solves Audit finding #6) */}
+            {/* CTAs with Distinct Visual Hierarchy */}
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <NavLink to="/donate">
                 <Button variant="primary" size="lg" icon={<Heart className="w-5 h-5 fill-white" />}>
@@ -69,7 +69,7 @@ export const Home: React.FC = () => {
 
           {/* Hero Visual Card */}
           <div className="lg:col-span-5 relative">
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20 dark:border-slate-800">
               <img
                 src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000&auto=format&fit=crop"
                 alt="InAmigos Foundation volunteers serving community members"
@@ -83,68 +83,68 @@ export const Home: React.FC = () => {
             </div>
 
             {/* Floating Trust Badge Overlay */}
-            <div className="absolute -bottom-6 -left-6 bg-white text-[#001E40] p-4 rounded-2xl shadow-xl border border-[#E1E3E4] hidden sm:flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-[#006E25]/10 flex items-center justify-center text-[#006E25]">
+            <div className="absolute -bottom-6 -left-6 bg-white dark:bg-slate-800 text-[#001E40] dark:text-white p-4 rounded-2xl shadow-xl border border-[#E1E3E4] dark:border-slate-700 hidden sm:flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-[#006E25]/10 dark:bg-emerald-500/20 flex items-center justify-center text-[#006E25] dark:text-emerald-400">
                 <CheckCircle2 className="w-6 h-6" />
               </div>
               <div className="flex flex-col text-left">
-                <span className="text-xs font-extrabold text-[#003366]">NITI Aayog Registered</span>
-                <span className="text-[11px] text-[#737780]">CT/2021/0278451</span>
+                <span className="text-xs font-extrabold text-[#003366] dark:text-sky-400">NITI Aayog Registered</span>
+                <span className="text-[11px] text-[#737780] dark:text-slate-400">CT/2021/0278451</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 2. IMPACT STATS STRIP (Solves Audit finding #2: moved directly beneath hero to build immediate trust) */}
-      <section className="w-full bg-white border-b border-[#E1E3E4] py-8">
+      {/* 2. IMPACT STATS STRIP */}
+      <section className="w-full bg-white dark:bg-slate-900 border-b border-[#E1E3E4] dark:border-slate-800 py-8 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            <div className="p-4 bg-[#F8F9FA] rounded-2xl border border-[#E1E3E4]">
-              <div className="w-10 h-10 mx-auto mb-2 rounded-full bg-[#003366]/10 flex items-center justify-center text-[#003366]">
+            <div className="p-4 bg-[#F8F9FA] dark:bg-slate-800/80 rounded-2xl border border-[#E1E3E4] dark:border-slate-700">
+              <div className="w-10 h-10 mx-auto mb-2 rounded-full bg-[#003366]/10 dark:bg-sky-500/20 flex items-center justify-center text-[#003366] dark:text-sky-400">
                 <Users className="w-5 h-5" />
               </div>
-              <span className="text-2xl sm:text-3xl font-extrabold text-[#003366]">{organizationData.impactStats.volunteers}</span>
-              <p className="text-xs text-[#737780] font-medium mt-0.5">Active Youth Volunteers</p>
+              <span className="text-2xl sm:text-3xl font-extrabold text-[#003366] dark:text-sky-400">{organizationData.impactStats.volunteers}</span>
+              <p className="text-xs text-[#737780] dark:text-slate-400 font-medium mt-0.5">Active Youth Volunteers</p>
             </div>
 
-            <div className="p-4 bg-[#F8F9FA] rounded-2xl border border-[#E1E3E4]">
-              <div className="w-10 h-10 mx-auto mb-2 rounded-full bg-[#006E25]/10 flex items-center justify-center text-[#006E25]">
+            <div className="p-4 bg-[#F8F9FA] dark:bg-slate-800/80 rounded-2xl border border-[#E1E3E4] dark:border-slate-700">
+              <div className="w-10 h-10 mx-auto mb-2 rounded-full bg-[#006E25]/10 dark:bg-emerald-500/20 flex items-center justify-center text-[#006E25] dark:text-emerald-400">
                 <Heart className="w-5 h-5" />
               </div>
-              <span className="text-2xl sm:text-3xl font-extrabold text-[#006E25]">{organizationData.impactStats.beneficiaries}</span>
-              <p className="text-xs text-[#737780] font-medium mt-0.5">Lives Touched Across India</p>
+              <span className="text-2xl sm:text-3xl font-extrabold text-[#006E25] dark:text-emerald-400">{organizationData.impactStats.beneficiaries}</span>
+              <p className="text-xs text-[#737780] dark:text-slate-400 font-medium mt-0.5">Lives Touched Across India</p>
             </div>
 
-            <div className="p-4 bg-[#F8F9FA] rounded-2xl border border-[#E1E3E4]">
-              <div className="w-10 h-10 mx-auto mb-2 rounded-full bg-[#EA8000]/10 flex items-center justify-center text-[#EA8000]">
+            <div className="p-4 bg-[#F8F9FA] dark:bg-slate-800/80 rounded-2xl border border-[#E1E3E4] dark:border-slate-700">
+              <div className="w-10 h-10 mx-auto mb-2 rounded-full bg-[#EA8000]/10 dark:bg-amber-500/20 flex items-center justify-center text-[#EA8000] dark:text-amber-400">
                 <MapPin className="w-5 h-5" />
               </div>
-              <span className="text-2xl sm:text-3xl font-extrabold text-[#EA8000]">{organizationData.impactStats.states}</span>
-              <p className="text-xs text-[#737780] font-medium mt-0.5">States & Union Territories</p>
+              <span className="text-2xl sm:text-3xl font-extrabold text-[#EA8000] dark:text-amber-400">{organizationData.impactStats.states}</span>
+              <p className="text-xs text-[#737780] dark:text-slate-400 font-medium mt-0.5">States & Union Territories</p>
             </div>
 
-            <div className="p-4 bg-[#F8F9FA] rounded-2xl border border-[#E1E3E4]">
-              <div className="w-10 h-10 mx-auto mb-2 rounded-full bg-[#003366]/10 flex items-center justify-center text-[#003366]">
+            <div className="p-4 bg-[#F8F9FA] dark:bg-slate-800/80 rounded-2xl border border-[#E1E3E4] dark:border-slate-700">
+              <div className="w-10 h-10 mx-auto mb-2 rounded-full bg-[#003366]/10 dark:bg-sky-500/20 flex items-center justify-center text-[#003366] dark:text-sky-400">
                 <Award className="w-5 h-5" />
               </div>
-              <span className="text-2xl sm:text-3xl font-extrabold text-[#003366]">{organizationData.impactStats.causes}</span>
-              <p className="text-xs text-[#737780] font-medium mt-0.5">Flagship Causes Active</p>
+              <span className="text-2xl sm:text-3xl font-extrabold text-[#003366] dark:text-sky-400">{organizationData.impactStats.causes}</span>
+              <p className="text-xs text-[#737780] dark:text-slate-400 font-medium mt-0.5">Flagship Causes Active</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 3. MISSION STATEMENT (Solves Audit finding #15: concise scannable layout) */}
-      <section className="w-full py-16 bg-[#F8F9FA]">
+      {/* 3. MISSION STATEMENT */}
+      <section className="w-full py-16 bg-[#F8F9FA] dark:bg-slate-900/50">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <span className="text-xs font-bold uppercase tracking-wider text-[#006E25] bg-[#80F98B]/20 px-3 py-1 rounded-full">
+          <span className="text-xs font-bold uppercase tracking-wider text-[#006E25] dark:text-emerald-400 bg-[#80F98B]/20 dark:bg-emerald-500/20 px-3 py-1 rounded-full border border-emerald-400/30">
             OUR CORE PURPOSE
           </span>
-          <h2 className="text-3xl sm:text-4xl font-black text-[#001E40] mt-3">
+          <h2 className="text-3xl sm:text-4xl font-black text-[#001E40] dark:text-white mt-3">
             Dignity, Equity, and Hope for Every Community Member
           </h2>
-          <p className="text-base sm:text-lg text-[#43474F] mt-4 leading-relaxed">
+          <p className="text-base sm:text-lg text-[#43474F] dark:text-slate-300 mt-4 leading-relaxed">
             Founded on 23 September 2020 by Mr. Govind Shukla, InAmigos Foundation operates as a transparent Section 8 non-profit NGO. We bridge the gap between fortunate citizens and underserved communities through structured youth action.
           </p>
 
@@ -159,12 +159,12 @@ export const Home: React.FC = () => {
       </section>
 
       {/* 4. FLAGSHIP PROGRAMS GRID */}
-      <section className="w-full py-16 bg-white border-y border-[#E1E3E4]">
+      <section className="w-full py-16 bg-white dark:bg-slate-900 border-y border-[#E1E3E4] dark:border-slate-800 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-10">
+          <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-10 text-left">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#006E25]">WHAT WE DO</span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#001E40] mt-1">Our 6 Flagship Initiatives</h2>
+              <span className="text-xs font-bold uppercase tracking-wider text-[#006E25] dark:text-emerald-400">WHAT WE DO</span>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#001E40] dark:text-white mt-1">Our 6 Flagship Initiatives</h2>
             </div>
             <NavLink to="/programs">
               <Button variant="ghost" size="sm" icon={<ArrowRight className="w-4 h-4" />}>
@@ -184,13 +184,13 @@ export const Home: React.FC = () => {
       {/* 5. TRUST BADGES STRIP */}
       <TrustBadges />
 
-      {/* 6. TESTIMONIALS SECTION (Solves Audit finding #17) */}
-      <section className="w-full py-16 bg-[#F8F9FA]">
+      {/* 6. TESTIMONIALS SECTION */}
+      <section className="w-full py-16 bg-[#F8F9FA] dark:bg-slate-900/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#006E25]">VOICES OF IMPACT</span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#001E40] mt-1">What Volunteers & Beneficiaries Say</h2>
-            <p className="text-sm text-[#43474F] mt-2">Real testimonials from youth volunteers and families served by our projects.</p>
+            <span className="text-xs font-bold uppercase tracking-wider text-[#006E25] dark:text-emerald-400">VOICES OF IMPACT</span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#001E40] dark:text-white mt-1">What Volunteers & Beneficiaries Say</h2>
+            <p className="text-sm text-[#43474F] dark:text-slate-300 mt-2">Real testimonials from youth volunteers and families served by our projects.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -202,12 +202,12 @@ export const Home: React.FC = () => {
       </section>
 
       {/* 7. EVENTS PREVIEW */}
-      <section className="w-full py-16 bg-white border-y border-[#E1E3E4]">
+      <section className="w-full py-16 bg-white dark:bg-slate-900 border-y border-[#E1E3E4] dark:border-slate-800 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-10">
+          <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-10 text-left">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#006E25]">COMMUNITY ACTION</span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#001E40] mt-1">Upcoming & Recent Drives</h2>
+              <span className="text-xs font-bold uppercase tracking-wider text-[#006E25] dark:text-emerald-400">COMMUNITY ACTION</span>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#001E40] dark:text-white mt-1">Upcoming & Recent Drives</h2>
             </div>
             <NavLink to="/events">
               <Button variant="outline" size="sm" icon={<ArrowRight className="w-4 h-4" />}>
@@ -225,14 +225,14 @@ export const Home: React.FC = () => {
       </section>
 
       {/* 8. GALLERY PREVIEW */}
-      <section className="w-full py-16 bg-[#F8F9FA]">
+      <section className="w-full py-16 bg-[#F8F9FA] dark:bg-slate-900/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="text-xs font-bold uppercase tracking-wider text-[#006E25]">FIELDWORK PROOF</span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#001E40] mt-1 mb-8">Ground Level Action in Photos</h2>
+          <span className="text-xs font-bold uppercase tracking-wider text-[#006E25] dark:text-emerald-400">FIELDWORK PROOF</span>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#001E40] dark:text-white mt-1 mb-8">Ground Level Action in Photos</h2>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {galleryData.slice(0, 4).map((g) => (
-              <div key={g.id} className="relative rounded-2xl overflow-hidden h-48 group shadow-sm">
+              <div key={g.id} className="relative rounded-2xl overflow-hidden h-48 group shadow-xs">
                 <img
                   src={g.imageUrl}
                   alt={g.altText}
@@ -258,10 +258,10 @@ export const Home: React.FC = () => {
       </section>
 
       {/* 9. FINAL CALL TO ACTION */}
-      <section className="w-full py-16 bg-linear-to-r from-[#003366] to-[#006E25] text-white text-center">
+      <section className="w-full py-16 bg-linear-to-r from-[#003366] to-[#006E25] dark:from-slate-950 dark:to-slate-900 text-white text-center border-t border-slate-800">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-3xl sm:text-4xl font-extrabold">Be the Catalyst for Change Today</h2>
-          <p className="text-slate-200 text-sm sm:text-base mt-3 max-w-xl mx-auto">
+          <p className="text-slate-200 dark:text-slate-300 text-sm sm:text-base mt-3 max-w-xl mx-auto">
             Whether you donate ₹500 to feed a family or give 2 hours a week to teach a child, your support creates tangible impact.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">

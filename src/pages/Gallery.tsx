@@ -15,9 +15,9 @@ export const Gallery: React.FC = () => {
     : galleryData.filter((img) => img.category === activeCategory);
 
   return (
-    <div className="flex flex-col w-full bg-[#F8F9FA]">
+    <div className="flex flex-col w-full bg-[#F8F9FA] dark:bg-slate-900 transition-colors">
       {/* Header Banner */}
-      <section className="w-full bg-[#001E40] text-white py-16 px-4 text-center relative overflow-hidden">
+      <section className="w-full bg-[#001E40] dark:bg-slate-950 text-white py-16 px-4 text-center relative overflow-hidden">
         <div className="max-w-4xl mx-auto relative z-10">
           <span className="text-xs font-bold uppercase tracking-wider text-emerald-400 bg-emerald-500/20 px-3 py-1 rounded-full border border-emerald-400/30">
             VISUAL PROOF OF FIELDWORK
@@ -30,7 +30,7 @@ export const Gallery: React.FC = () => {
       </section>
 
       {/* Filter Category Bar */}
-      <section className="w-full bg-white border-b border-[#E1E3E4] py-4 sticky top-[65px] z-30 shadow-xs">
+      <section className="w-full bg-white dark:bg-slate-900 border-b border-[#E1E3E4] dark:border-slate-800 py-4 sticky top-16.25 z-30 shadow-xs transition-colors">
         <div className="max-w-7xl mx-auto px-4 overflow-x-auto scrollbar-none flex items-center justify-start md:justify-center gap-2">
           {categories.map((cat) => (
             <button
@@ -38,8 +38,8 @@ export const Gallery: React.FC = () => {
               onClick={() => setActiveCategory(cat)}
               className={`px-4 py-2 text-xs font-bold rounded-full transition-all duration-200 shrink-0 ${
                 activeCategory === cat
-                  ? 'bg-[#003366] text-white shadow-sm'
-                  : 'bg-[#F8F9FA] text-[#43474F] hover:bg-[#E1E3E4]'
+                  ? 'bg-[#003366] dark:bg-sky-500 text-white shadow-xs'
+                  : 'bg-[#F8F9FA] dark:bg-slate-800 text-[#43474F] dark:text-slate-300 hover:bg-[#E1E3E4] dark:hover:bg-slate-700'
               }`}
             >
               {cat}
@@ -48,7 +48,7 @@ export const Gallery: React.FC = () => {
         </div>
       </section>
 
-      {/* Accessible Filterable Image Grid (Solves Audit finding #9) */}
+      {/* Accessible Filterable Image Grid */}
       <section className="w-full py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -56,9 +56,9 @@ export const Gallery: React.FC = () => {
               <div
                 key={img.id}
                 onClick={() => setSelectedImage(img)}
-                className="group relative bg-white rounded-2xl border border-[#E1E3E4] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col"
+                className="group relative bg-white dark:bg-slate-800 rounded-2xl border border-[#E1E3E4] dark:border-slate-700 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col"
               >
-                <div className="relative h-60 w-full overflow-hidden bg-slate-100">
+                <div className="relative h-60 w-full overflow-hidden bg-slate-100 dark:bg-slate-900">
                   <img
                     src={img.imageUrl}
                     alt={img.altText}
@@ -70,16 +70,16 @@ export const Gallery: React.FC = () => {
                       <ZoomIn className="w-5 h-5 text-white" />
                     </div>
                   </div>
-                  <span className="absolute top-3 left-3 bg-[#003366] text-white text-[10px] font-bold px-2.5 py-1 rounded-full shadow-sm">
+                  <span className="absolute top-3 left-3 bg-[#003366] dark:bg-sky-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-full shadow-xs">
                     {img.category}
                   </span>
                 </div>
 
                 <div className="p-4 text-left flex flex-col gap-1">
-                  <h3 className="text-sm font-bold text-[#001E40] truncate">{img.title}</h3>
-                  <div className="flex items-center justify-between text-[11px] text-[#737780] mt-1">
+                  <h3 className="text-sm font-bold text-[#001E40] dark:text-white truncate">{img.title}</h3>
+                  <div className="flex items-center justify-between text-[11px] text-[#737780] dark:text-slate-400 mt-1">
                     <span className="flex items-center gap-1">
-                      <MapPin className="w-3 h-3 text-[#006E25]" /> {img.location}
+                      <MapPin className="w-3 h-3 text-[#006E25] dark:text-emerald-400" /> {img.location}
                     </span>
                     <span>{img.date}</span>
                   </div>
@@ -106,11 +106,11 @@ export const Gallery: React.FC = () => {
               />
             </div>
             <div className="flex flex-col gap-2 p-2">
-              <span className="text-xs font-bold text-[#006E25] uppercase tracking-wider">
+              <span className="text-xs font-bold text-[#006E25] dark:text-emerald-400 uppercase tracking-wider">
                 Initiative: {selectedImage.category}
               </span>
-              <p className="text-sm text-[#43474F]">{selectedImage.altText}</p>
-              <div className="flex items-center justify-between text-xs text-[#737780] pt-2 border-t border-[#E1E3E4]">
+              <p className="text-sm text-[#43474F] dark:text-slate-300">{selectedImage.altText}</p>
+              <div className="flex items-center justify-between text-xs text-[#737780] dark:text-slate-400 pt-2 border-t border-[#E1E3E4] dark:border-slate-700">
                 <span>Location: {selectedImage.location}</span>
                 <span>Date: {selectedImage.date}</span>
               </div>

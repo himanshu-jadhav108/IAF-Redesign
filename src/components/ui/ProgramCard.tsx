@@ -15,27 +15,27 @@ const iconMap: Record<string, React.ReactNode> = {
 
 export const ProgramCard: React.FC<{ program: Program }> = ({ program }) => {
   return (
-    <div className="bg-white border border-[#E1E3E4] rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group hover:-translate-y-1">
+    <div className="bg-white dark:bg-slate-800 border border-[#E1E3E4] dark:border-slate-700 rounded-2xl overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col group hover:-translate-y-1">
       {/* Image with Accent Badge */}
-      <div className="relative h-48 sm:h-56 w-full overflow-hidden bg-slate-100">
+      <div className="relative h-48 sm:h-56 w-full overflow-hidden bg-slate-100 dark:bg-slate-900">
         <img
           src={program.imageUrl}
           alt={program.name}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent to-transparent" />
         
-        {/* Category Pill Badge (Fixes Audit finding #8) */}
-        <span className="absolute top-4 left-4 bg-white/90 backdrop-blur-md text-[#003366] text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+        {/* Category Pill Badge */}
+        <span className="absolute top-4 left-4 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md text-[#003366] dark:text-sky-300 text-xs font-bold px-3 py-1 rounded-full shadow-xs border border-white/20 dark:border-slate-700">
           {program.category}
         </span>
 
         {/* Icon & Title Overlay */}
         <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 text-left">
             <div
-              className="w-10 h-10 rounded-xl flex items-center justify-center text-white shadow-md"
+              className="w-10 h-10 rounded-xl flex items-center justify-center text-white shadow-md shrink-0"
               style={{ backgroundColor: program.accentColor }}
             >
               {iconMap[program.iconName] || <HeartHandshake className="w-6 h-6" />}
@@ -49,23 +49,23 @@ export const ProgramCard: React.FC<{ program: Program }> = ({ program }) => {
       </div>
 
       {/* Card Content */}
-      <div className="p-6 flex-1 flex flex-col justify-between gap-4">
-        <p className="text-sm text-[#43474F] leading-relaxed">
+      <div className="p-6 flex-1 flex flex-col justify-between gap-4 text-left">
+        <p className="text-sm text-[#43474F] dark:text-slate-300 leading-relaxed">
           {program.shortDescription}
         </p>
 
         {/* Verified Impact Metrics Strip */}
-        <div className="grid grid-cols-3 gap-2 py-3 px-2 bg-[#F8F9FA] rounded-xl border border-[#E1E3E4] text-center">
+        <div className="grid grid-cols-3 gap-2 py-3 px-2 bg-[#F8F9FA] dark:bg-slate-900/80 rounded-xl border border-[#E1E3E4] dark:border-slate-700 text-center">
           {program.impactMetrics.map((metric, idx) => (
             <div key={idx} className="flex flex-col">
-              <span className="text-sm font-extrabold text-[#003366]">{metric.value}</span>
-              <span className="text-[10px] font-medium text-[#737780] leading-tight">{metric.label}</span>
+              <span className="text-sm font-extrabold text-[#003366] dark:text-sky-400">{metric.value}</span>
+              <span className="text-[10px] font-medium text-[#737780] dark:text-slate-400 leading-tight">{metric.label}</span>
             </div>
           ))}
         </div>
 
         {/* Actions */}
-        <div className="pt-2 flex items-center justify-between gap-3 border-t border-[#E1E3E4]">
+        <div className="pt-2 flex items-center justify-between gap-3 border-t border-[#E1E3E4] dark:border-slate-700">
           <NavLink to={`/programs#${program.id}`} className="w-full">
             <Button variant="outline" fullWidth size="sm" icon={<ArrowRight className="w-4 h-4" />}>
               Explore Initiative

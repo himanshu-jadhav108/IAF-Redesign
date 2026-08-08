@@ -16,9 +16,9 @@ export const About: React.FC = () => {
   ];
 
   return (
-    <div className="flex flex-col w-full bg-[#F8F9FA]">
+    <div className="flex flex-col w-full bg-[#F8F9FA] dark:bg-slate-900 transition-colors">
       {/* Header Banner */}
-      <section className="w-full bg-[#001E40] text-white py-16 px-4 text-center relative overflow-hidden">
+      <section className="w-full bg-[#001E40] dark:bg-slate-950 text-white py-16 px-4 text-center relative overflow-hidden">
         <div className="max-w-4xl mx-auto relative z-10">
           <span className="text-xs font-bold uppercase tracking-wider text-emerald-400 bg-emerald-500/20 px-3 py-1 rounded-full border border-emerald-400/30">
             WHO WE ARE
@@ -34,40 +34,40 @@ export const About: React.FC = () => {
       <TrustBadges compact />
 
       {/* Organization Overview & Story */}
-      <section className="w-full py-16 bg-white border-b border-[#E1E3E4]">
+      <section className="w-full py-16 bg-white dark:bg-slate-900 border-b border-[#E1E3E4] dark:border-slate-800 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7 flex flex-col gap-6 text-left">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#006E25]">FOUNDING STORY</span>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-[#001E40]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#006E25] dark:text-emerald-400">FOUNDING STORY</span>
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-[#001E40] dark:text-white">
               Empowering Grassroots Action Since September 2020
             </h2>
-            <p className="text-sm sm:text-base text-[#43474F] leading-relaxed">
+            <p className="text-sm sm:text-base text-[#43474F] dark:text-slate-300 leading-relaxed">
               InAmigos Foundation was established on <strong>23 September 2020</strong> in Bilaspur, Chhattisgarh, under the vision of founder <strong>Mr. Govind Shukla</strong>. What began as a small group of passionate students distributing meals during a crisis has grown into a structured, pan-India non-profit organization active in 28 states and union territories.
             </p>
-            <p className="text-sm sm:text-base text-[#43474F] leading-relaxed">
+            <p className="text-sm sm:text-base text-[#43474F] dark:text-slate-300 leading-relaxed">
               We operate on a simple principle: <strong>direct impact without bureaucratic overhead</strong>. Our volunteers work directly in slums, rural hamlets, street animal feeding zones, and informal schools to ensure that every rupee donated yields real human relief.
             </p>
 
             <div className="grid grid-cols-2 gap-4 pt-2">
-              <div className="p-4 bg-[#F8F9FA] rounded-2xl border border-[#E1E3E4]">
-                <span className="text-xs font-bold text-[#003366] uppercase">Registration</span>
-                <p className="text-xs text-[#43474F] mt-1 font-semibold">Section 8 Registered Non-Profit (Govt. of India)</p>
+              <div className="p-4 bg-[#F8F9FA] dark:bg-slate-800 border border-[#E1E3E4] dark:border-slate-700 rounded-2xl">
+                <span className="text-xs font-bold text-[#003366] dark:text-sky-400 uppercase">Registration</span>
+                <p className="text-xs text-[#43474F] dark:text-slate-300 mt-1 font-semibold">Section 8 Registered Non-Profit (Govt. of India)</p>
               </div>
-              <div className="p-4 bg-[#F8F9FA] rounded-2xl border border-[#E1E3E4]">
-                <span className="text-xs font-bold text-[#006E25] uppercase">Tax Benefit</span>
-                <p className="text-xs text-[#43474F] mt-1 font-semibold">80G Tax Exemption & 12A Certified</p>
+              <div className="p-4 bg-[#F8F9FA] dark:bg-slate-800 border border-[#E1E3E4] dark:border-slate-700 rounded-2xl">
+                <span className="text-xs font-bold text-[#006E25] dark:text-emerald-400 uppercase">Tax Benefit</span>
+                <p className="text-xs text-[#43474F] dark:text-slate-300 mt-1 font-semibold">80G Tax Exemption & 12A Certified</p>
               </div>
             </div>
           </div>
 
           <div className="lg:col-span-5 relative">
-            <div className="rounded-3xl overflow-hidden shadow-xl border-4 border-white">
+            <div className="rounded-3xl overflow-hidden shadow-xl border-4 border-white dark:border-slate-800">
               <img
                 src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop"
                 alt="Founder Mr. Govind Shukla and team"
                 className="w-full h-95 object-cover"
               />
-              <div className="bg-[#001E40] text-white p-4 text-left">
+              <div className="bg-[#001E40] dark:bg-slate-950 text-white p-4 text-left">
                 <span className="text-xs font-bold text-emerald-400">FOUNDER ATTRIBUTION</span>
                 <h3 className="text-base font-bold mt-0.5">Mr. Govind Shukla</h3>
                 <p className="text-xs text-slate-300">Founder & Chief Executive Director</p>
@@ -78,35 +78,35 @@ export const About: React.FC = () => {
       </section>
 
       {/* Mission, Vision & Values */}
-      <section className="w-full py-16 bg-[#F8F9FA]">
+      <section className="w-full py-16 bg-[#F8F9FA] dark:bg-slate-900/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-2xl border border-[#E1E3E4] shadow-sm flex flex-col items-start text-left">
-              <div className="w-12 h-12 rounded-xl bg-[#003366]/10 flex items-center justify-center text-[#003366] mb-4">
+            <div className="bg-white dark:bg-slate-800 p-8 rounded-2xl border border-[#E1E3E4] dark:border-slate-700 shadow-xs flex flex-col items-start text-left">
+              <div className="w-12 h-12 rounded-xl bg-[#003366]/10 dark:bg-sky-500/20 flex items-center justify-center text-[#003366] dark:text-sky-400 mb-4">
                 <Target className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-bold text-[#001E40]">Our Mission</h3>
-              <p className="text-sm text-[#43474F] mt-3 leading-relaxed">
+              <h3 className="text-xl font-bold text-[#001E40] dark:text-white">Our Mission</h3>
+              <p className="text-sm text-[#43474F] dark:text-slate-300 mt-3 leading-relaxed">
                 To create scalable, ground-level interventions in food security, child education, animal welfare, women's health, environmental action, and youth skills.
               </p>
             </div>
 
-            <div className="bg-white p-8 rounded-2xl border border-[#E1E3E4] shadow-sm flex flex-col items-start text-left">
-              <div className="w-12 h-12 rounded-xl bg-[#006E25]/10 flex items-center justify-center text-[#006E25] mb-4">
+            <div className="bg-white dark:bg-slate-800 p-8 rounded-2xl border border-[#E1E3E4] dark:border-slate-700 shadow-xs flex flex-col items-start text-left">
+              <div className="w-12 h-12 rounded-xl bg-[#006E25]/10 dark:bg-emerald-500/20 flex items-center justify-center text-[#006E25] dark:text-emerald-400 mb-4">
                 <Eye className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-bold text-[#001E40]">Our Vision</h3>
-              <p className="text-sm text-[#43474F] mt-3 leading-relaxed">
+              <h3 className="text-xl font-bold text-[#001E40] dark:text-white">Our Vision</h3>
+              <p className="text-sm text-[#43474F] dark:text-slate-300 mt-3 leading-relaxed">
                 An India where no individual suffers from hunger or illiteracy, stray animals are protected, women live with bodily dignity, and youth lead community change.
               </p>
             </div>
 
-            <div className="bg-white p-8 rounded-2xl border border-[#E1E3E4] shadow-sm flex flex-col items-start text-left">
-              <div className="w-12 h-12 rounded-xl bg-[#EA8000]/10 flex items-center justify-center text-[#EA8000] mb-4">
+            <div className="bg-white dark:bg-slate-800 p-8 rounded-2xl border border-[#E1E3E4] dark:border-slate-700 shadow-xs flex flex-col items-start text-left">
+              <div className="w-12 h-12 rounded-xl bg-[#EA8000]/10 dark:bg-amber-500/20 flex items-center justify-center text-[#EA8000] dark:text-amber-400 mb-4">
                 <Heart className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-bold text-[#001E40]">Our Values</h3>
-              <p className="text-sm text-[#43474F] mt-3 leading-relaxed">
+              <h3 className="text-xl font-bold text-[#001E40] dark:text-white">Our Values</h3>
+              <p className="text-sm text-[#43474F] dark:text-slate-300 mt-3 leading-relaxed">
                 Radical financial transparency, 80G donor accountability, zero discrimination, and empowering youth volunteer leadership across communities.
               </p>
             </div>
@@ -115,20 +115,20 @@ export const About: React.FC = () => {
       </section>
 
       {/* Interactive Timeline */}
-      <section className="w-full py-16 bg-white border-y border-[#E1E3E4]">
+      <section className="w-full py-16 bg-white dark:bg-slate-900 border-y border-[#E1E3E4] dark:border-slate-800 transition-colors">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <span className="text-xs font-bold uppercase tracking-wider text-[#006E25]">OUR JOURNEY</span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#001E40] mt-1 mb-10">Milestones & Growth</h2>
+          <span className="text-xs font-bold uppercase tracking-wider text-[#006E25] dark:text-emerald-400">OUR JOURNEY</span>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#001E40] dark:text-white mt-1 mb-10">Milestones & Growth</h2>
 
-          <div className="relative border-l-2 border-[#003366] pl-6 text-left flex flex-col gap-8 ml-4 sm:ml-8">
+          <div className="relative border-l-2 border-[#003366] dark:border-sky-400 pl-6 text-left flex flex-col gap-8 ml-4 sm:ml-8">
             {timelineEvents.map((event, idx) => (
               <div key={idx} className="relative group">
-                <div className="absolute -left-7.75 top-1.5 w-4 h-4 rounded-full bg-[#003366] border-4 border-white group-hover:bg-[#FF8C00] transition-colors" />
-                <span className="text-xs font-bold text-[#006E25] bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                <div className="absolute -left-7.75 top-1.5 w-4 h-4 rounded-full bg-[#003366] dark:bg-sky-400 border-4 border-white dark:border-slate-900 group-hover:bg-[#FF8C00] transition-colors" />
+                <span className="text-xs font-bold text-[#006E25] dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/50 px-2.5 py-0.5 rounded-full border border-emerald-200 dark:border-emerald-800">
                   {event.year}
                 </span>
-                <h3 className="text-lg font-bold text-[#001E40] mt-1">{event.title}</h3>
-                <p className="text-sm text-[#43474F] mt-1 leading-relaxed">{event.desc}</p>
+                <h3 className="text-lg font-bold text-[#001E40] dark:text-white mt-1">{event.title}</h3>
+                <p className="text-sm text-[#43474F] dark:text-slate-300 mt-1 leading-relaxed">{event.desc}</p>
               </div>
             ))}
           </div>
@@ -136,53 +136,53 @@ export const About: React.FC = () => {
       </section>
 
       {/* Leadership & Core Team */}
-      <section className="w-full py-16 bg-[#F8F9FA]">
+      <section className="w-full py-16 bg-[#F8F9FA] dark:bg-slate-900/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#006E25]">LEADERSHIP & VOLUNTEERS</span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#001E40] mt-1">Our Core Team</h2>
-            <p className="text-sm text-[#43474F] mt-2">Dedicated leaders driving ground execution and volunteer mobilization.</p>
+            <span className="text-xs font-bold uppercase tracking-wider text-[#006E25] dark:text-emerald-400">LEADERSHIP & VOLUNTEERS</span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#001E40] dark:text-white mt-1">Our Core Team</h2>
+            <p className="text-sm text-[#43474F] dark:text-slate-300 mt-2">Dedicated leaders driving ground execution and volunteer mobilization.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {teamData.map((member, idx) => (
-              <div key={idx} className="bg-white p-6 rounded-2xl border border-[#E1E3E4] shadow-sm flex flex-col items-center text-center">
+              <div key={idx} className="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-[#E1E3E4] dark:border-slate-700 shadow-xs flex flex-col items-center text-center">
                 <img
                   src={member.imageUrl}
                   alt={member.name}
-                  className="w-24 h-24 rounded-full object-cover border-4 border-[#003366]/10 mb-4"
+                  className="w-24 h-24 rounded-full object-cover border-4 border-[#003366]/10 dark:border-sky-400/20 mb-4"
                 />
-                <h3 className="text-lg font-bold text-[#001E40]">{member.name}</h3>
-                <span className="text-xs font-bold text-[#006E25] mt-0.5">{member.role}</span>
-                <span className="text-[11px] text-[#737780] mt-0.5">{member.location}</span>
-                <p className="text-xs text-[#43474F] mt-3 leading-relaxed">{member.bio}</p>
+                <h3 className="text-lg font-bold text-[#001E40] dark:text-white">{member.name}</h3>
+                <span className="text-xs font-bold text-[#006E25] dark:text-emerald-400 mt-0.5">{member.role}</span>
+                <span className="text-[11px] text-[#737780] dark:text-slate-400 mt-0.5">{member.location}</span>
+                <p className="text-xs text-[#43474F] dark:text-slate-300 mt-3 leading-relaxed">{member.bio}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Structured FAQ Section (Solves Audit finding #14) */}
-      <section className="w-full py-16 bg-white border-t border-[#E1E3E4]">
+      {/* Structured FAQ Section */}
+      <section className="w-full py-16 bg-white dark:bg-slate-900 border-t border-[#E1E3E4] dark:border-slate-800 transition-colors">
         <div className="max-w-4xl mx-auto px-4">
           <div className="text-center mb-10">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#006E25]">FREQUENTLY ASKED QUESTIONS</span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#001E40] mt-1">Everything You Need to Know</h2>
+            <span className="text-xs font-bold uppercase tracking-wider text-[#006E25] dark:text-emerald-400">FREQUENTLY ASKED QUESTIONS</span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#001E40] dark:text-white mt-1">Everything You Need to Know</h2>
           </div>
 
           <div className="flex flex-col gap-3">
             {faqData.map((faq, idx) => (
-              <div key={idx} className="border border-[#E1E3E4] rounded-2xl overflow-hidden bg-white">
+              <div key={idx} className="border border-[#E1E3E4] dark:border-slate-700 rounded-2xl overflow-hidden bg-white dark:bg-slate-800">
                 <button
                   onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                  className="w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-[#001E40] hover:bg-[#F8F9FA] transition-colors focus:outline-none"
+                  className="w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-[#001E40] dark:text-white hover:bg-[#F8F9FA] dark:hover:bg-slate-700/50 transition-colors focus:outline-none"
                   aria-expanded={openFaq === idx}
                 >
                   <span className="text-sm sm:text-base">{faq.question}</span>
-                  {openFaq === idx ? <ChevronUp className="w-5 h-5 text-[#003366] shrink-0" /> : <ChevronDown className="w-5 h-5 text-[#737780] shrink-0" />}
+                  {openFaq === idx ? <ChevronUp className="w-5 h-5 text-[#003366] dark:text-sky-400 shrink-0" /> : <ChevronDown className="w-5 h-5 text-[#737780] dark:text-slate-400 shrink-0" />}
                 </button>
                 {openFaq === idx && (
-                  <div className="p-5 pt-0 text-sm text-[#43474F] leading-relaxed border-t border-[#E1E3E4]/50 bg-[#F8F9FA]/50">
+                  <div className="p-5 pt-0 text-sm text-[#43474F] dark:text-slate-300 leading-relaxed border-t border-[#E1E3E4]/50 dark:border-slate-700 bg-[#F8F9FA]/50 dark:bg-slate-850">
                     {faq.answer}
                   </div>
                 )}
