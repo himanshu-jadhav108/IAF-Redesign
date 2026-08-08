@@ -1,0 +1,283 @@
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { Heart, Users, MapPin, Award, ArrowRight, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { Button } from '@/components/ui/Button';
+import { TrustBadges } from '@/components/ui/TrustBadges';
+import { ProgramCard } from '@/components/ui/ProgramCard';
+import { EventCard } from '@/components/ui/EventCard';
+import { TestimonialCard } from '@/components/ui/TestimonialCard';
+import { organizationData } from '@/data/organizationData';
+import { programsData } from '@/data/programsData';
+import { eventsData } from '@/data/eventsData';
+import { testimonialsData } from '@/data/testimonialsData';
+import { galleryData } from '@/data/galleryData';
+
+export const Home: React.FC = () => {
+  return (
+    <div className="flex flex-col w-full">
+      {/* 1. HERO SECTION (Solves Audit Finding #3 & #6) */}
+      <section className="relative w-full bg-linear-to-b from-[#001E40] via-[#003366] to-[#001E40] text-white pt-12 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        {/* Background Subtle Geometric Accents */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+          {/* Hero Text Copy */}
+          <div className="lg:col-span-7 flex flex-col items-start gap-6 text-left">
+            <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider bg-white/10 text-emerald-300 px-3.5 py-1.5 rounded-full border border-white/10 backdrop-blur-sm">
+              <ShieldCheck className="w-4 h-4 text-emerald-400" />
+              Section 8 Registered Non-Profit • 80G Tax Exempted
+            </span>
+
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.15]">
+              Serving Humanity with <span className="text-[#FF8C00]">Compassion</span> & Ground Action.
+            </h1>
+
+            <p className="text-base sm:text-lg text-slate-200 leading-relaxed font-normal max-w-2xl">
+              InAmigos Foundation empowers vulnerable communities across India through six flagship causes: food security, child education, animal welfare, women's health, environmental action, and youth skills.
+            </p>
+
+            {/* Sub-Program Pill Context Strip (Solves Audit finding #3) */}
+            <div className="w-full bg-white/10 backdrop-blur-md p-3 rounded-2xl border border-white/15">
+              <span className="text-xs font-bold text-slate-300 uppercase tracking-wider block mb-2">
+                Our 6 Flagship Initiatives:
+              </span>
+              <div className="flex flex-wrap gap-2 text-xs font-semibold">
+                <span className="bg-emerald-500/20 text-emerald-300 px-2.5 py-1 rounded-lg border border-emerald-400/30">सेवा Sewa (Food)</span>
+                <span className="bg-blue-500/20 text-blue-300 px-2.5 py-1 rounded-lg border border-blue-400/30">बचपनशाला Bachpanshala (Schooling)</span>
+                <span className="bg-amber-500/20 text-amber-300 px-2.5 py-1 rounded-lg border border-amber-400/30">जीव Jeev (Animals)</span>
+                <span className="bg-fuchsia-500/20 text-fuchsia-300 px-2.5 py-1 rounded-lg border border-fuchsia-400/30">उड़ान Udaan (Women)</span>
+                <span className="bg-green-500/20 text-green-300 px-2.5 py-1 rounded-lg border border-green-400/30">प्रकृति Prakriti (Trees)</span>
+                <span className="bg-cyan-500/20 text-cyan-300 px-2.5 py-1 rounded-lg border border-cyan-400/30">विकास Vikas (Skills)</span>
+              </div>
+            </div>
+
+            {/* CTAs with Distinct Visual Hierarchy (Solves Audit finding #6) */}
+            <div className="flex flex-wrap items-center gap-4 pt-2">
+              <NavLink to="/donate">
+                <Button variant="primary" size="lg" icon={<Heart className="w-5 h-5 fill-white" />}>
+                  Donate Now (80G Tax Exemption)
+                </Button>
+              </NavLink>
+              <NavLink to="/volunteer">
+                <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-[#001E40]">
+                  Volunteer With Us
+                </Button>
+              </NavLink>
+            </div>
+          </div>
+
+          {/* Hero Visual Card */}
+          <div className="lg:col-span-5 relative">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20">
+              <img
+                src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000&auto=format&fit=crop"
+                alt="InAmigos Foundation volunteers serving community members"
+                className="w-full h-100 object-cover"
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6 text-left">
+                <span className="text-xs font-bold text-emerald-400 uppercase tracking-wider">Ground Impact Drive</span>
+                <h3 className="text-xl font-bold text-white mt-1">Project Sewa Food Distribution</h3>
+                <p className="text-xs text-slate-300 mt-1">Daily hot meals served to daily wage earners & unhoused elders in Bilaspur.</p>
+              </div>
+            </div>
+
+            {/* Floating Trust Badge Overlay */}
+            <div className="absolute -bottom-6 -left-6 bg-white text-[#001E40] p-4 rounded-2xl shadow-xl border border-[#E1E3E4] hidden sm:flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-[#006E25]/10 flex items-center justify-center text-[#006E25]">
+                <CheckCircle2 className="w-6 h-6" />
+              </div>
+              <div className="flex flex-col text-left">
+                <span className="text-xs font-extrabold text-[#003366]">NITI Aayog Registered</span>
+                <span className="text-[11px] text-[#737780]">CT/2021/0278451</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. IMPACT STATS STRIP (Solves Audit finding #2: moved directly beneath hero to build immediate trust) */}
+      <section className="w-full bg-white border-b border-[#E1E3E4] py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div className="p-4 bg-[#F8F9FA] rounded-2xl border border-[#E1E3E4]">
+              <div className="w-10 h-10 mx-auto mb-2 rounded-full bg-[#003366]/10 flex items-center justify-center text-[#003366]">
+                <Users className="w-5 h-5" />
+              </div>
+              <span className="text-2xl sm:text-3xl font-extrabold text-[#003366]">{organizationData.impactStats.volunteers}</span>
+              <p className="text-xs text-[#737780] font-medium mt-0.5">Active Youth Volunteers</p>
+            </div>
+
+            <div className="p-4 bg-[#F8F9FA] rounded-2xl border border-[#E1E3E4]">
+              <div className="w-10 h-10 mx-auto mb-2 rounded-full bg-[#006E25]/10 flex items-center justify-center text-[#006E25]">
+                <Heart className="w-5 h-5" />
+              </div>
+              <span className="text-2xl sm:text-3xl font-extrabold text-[#006E25]">{organizationData.impactStats.beneficiaries}</span>
+              <p className="text-xs text-[#737780] font-medium mt-0.5">Lives Touched Across India</p>
+            </div>
+
+            <div className="p-4 bg-[#F8F9FA] rounded-2xl border border-[#E1E3E4]">
+              <div className="w-10 h-10 mx-auto mb-2 rounded-full bg-[#EA8000]/10 flex items-center justify-center text-[#EA8000]">
+                <MapPin className="w-5 h-5" />
+              </div>
+              <span className="text-2xl sm:text-3xl font-extrabold text-[#EA8000]">{organizationData.impactStats.states}</span>
+              <p className="text-xs text-[#737780] font-medium mt-0.5">States & Union Territories</p>
+            </div>
+
+            <div className="p-4 bg-[#F8F9FA] rounded-2xl border border-[#E1E3E4]">
+              <div className="w-10 h-10 mx-auto mb-2 rounded-full bg-[#003366]/10 flex items-center justify-center text-[#003366]">
+                <Award className="w-5 h-5" />
+              </div>
+              <span className="text-2xl sm:text-3xl font-extrabold text-[#003366]">{organizationData.impactStats.causes}</span>
+              <p className="text-xs text-[#737780] font-medium mt-0.5">Flagship Causes Active</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. MISSION STATEMENT (Solves Audit finding #15: concise scannable layout) */}
+      <section className="w-full py-16 bg-[#F8F9FA]">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <span className="text-xs font-bold uppercase tracking-wider text-[#006E25] bg-[#80F98B]/20 px-3 py-1 rounded-full">
+            OUR CORE PURPOSE
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-black text-[#001E40] mt-3">
+            Dignity, Equity, and Hope for Every Community Member
+          </h2>
+          <p className="text-base sm:text-lg text-[#43474F] mt-4 leading-relaxed">
+            Founded on 23 September 2020 by Mr. Govind Shukla, InAmigos Foundation operates as a transparent Section 8 non-profit NGO. We bridge the gap between fortunate citizens and underserved communities through structured youth action.
+          </p>
+
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <NavLink to="/about">
+              <Button variant="outline" size="sm" icon={<ArrowRight className="w-4 h-4" />}>
+                Read Our Story & Journey
+              </Button>
+            </NavLink>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. FLAGSHIP PROGRAMS GRID */}
+      <section className="w-full py-16 bg-white border-y border-[#E1E3E4]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-10">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-wider text-[#006E25]">WHAT WE DO</span>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#001E40] mt-1">Our 6 Flagship Initiatives</h2>
+            </div>
+            <NavLink to="/programs">
+              <Button variant="ghost" size="sm" icon={<ArrowRight className="w-4 h-4" />}>
+                View All Programs
+              </Button>
+            </NavLink>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {programsData.map((program) => (
+              <ProgramCard key={program.id} program={program} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. TRUST BADGES STRIP */}
+      <TrustBadges />
+
+      {/* 6. TESTIMONIALS SECTION (Solves Audit finding #17) */}
+      <section className="w-full py-16 bg-[#F8F9FA]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#006E25]">VOICES OF IMPACT</span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#001E40] mt-1">What Volunteers & Beneficiaries Say</h2>
+            <p className="text-sm text-[#43474F] mt-2">Real testimonials from youth volunteers and families served by our projects.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {testimonialsData.map((t) => (
+              <TestimonialCard key={t.id} testimonial={t} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 7. EVENTS PREVIEW */}
+      <section className="w-full py-16 bg-white border-y border-[#E1E3E4]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-10">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-wider text-[#006E25]">COMMUNITY ACTION</span>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#001E40] mt-1">Upcoming & Recent Drives</h2>
+            </div>
+            <NavLink to="/events">
+              <Button variant="outline" size="sm" icon={<ArrowRight className="w-4 h-4" />}>
+                View All Events
+              </Button>
+            </NavLink>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {eventsData.slice(0, 3).map((e) => (
+              <EventCard key={e.id} event={e} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 8. GALLERY PREVIEW */}
+      <section className="w-full py-16 bg-[#F8F9FA]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <span className="text-xs font-bold uppercase tracking-wider text-[#006E25]">FIELDWORK PROOF</span>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#001E40] mt-1 mb-8">Ground Level Action in Photos</h2>
+
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            {galleryData.slice(0, 4).map((g) => (
+              <div key={g.id} className="relative rounded-2xl overflow-hidden h-48 group shadow-sm">
+                <img
+                  src={g.imageUrl}
+                  alt={g.altText}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-3 text-left text-white text-xs">
+                  <span className="font-bold">{g.title}</span>
+                  <span className="text-[10px] text-slate-200">{g.location}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8">
+            <NavLink to="/gallery">
+              <Button variant="outline" size="sm">
+                Explore Full Gallery
+              </Button>
+            </NavLink>
+          </div>
+        </div>
+      </section>
+
+      {/* 9. FINAL CALL TO ACTION */}
+      <section className="w-full py-16 bg-linear-to-r from-[#003366] to-[#006E25] text-white text-center">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-3xl sm:text-4xl font-extrabold">Be the Catalyst for Change Today</h2>
+          <p className="text-slate-200 text-sm sm:text-base mt-3 max-w-xl mx-auto">
+            Whether you donate ₹500 to feed a family or give 2 hours a week to teach a child, your support creates tangible impact.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <NavLink to="/donate">
+              <Button variant="primary" size="lg" icon={<Heart className="w-5 h-5 fill-white" />}>
+                Donate Now (80G Tax Exemption)
+              </Button>
+            </NavLink>
+            <NavLink to="/volunteer">
+              <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-[#001E40]">
+                Apply as Volunteer
+              </Button>
+            </NavLink>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
