@@ -12,6 +12,7 @@ import { AnimatedCounter } from '@/components/ui/AnimatedCounter';
 import { ScrollProgress } from '@/components/ui/ScrollProgress';
 import { PageTransition } from '@/components/ui/PageTransition';
 
+import ngoGroundActionImg from '@/assets/ngo_ground_action.png';
 import { organizationData } from '@/data/organizationData';
 import { programsData } from '@/data/programsData';
 import { eventsData } from '@/data/eventsData';
@@ -129,8 +130,8 @@ export const Home: React.FC = () => {
             >
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20 dark:border-slate-800 group">
                 <img
-                  src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000&auto=format&fit=crop"
-                  alt="InAmigos Foundation volunteers serving community members"
+                  src={ngoGroundActionImg}
+                  alt="InAmigos Foundation founder and volunteers serving community members"
                   className="w-full h-100 object-cover group-hover:scale-103 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6 text-left">

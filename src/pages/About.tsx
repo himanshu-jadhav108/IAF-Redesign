@@ -4,6 +4,7 @@ import { Target, Eye, Heart, ChevronDown } from 'lucide-react';
 import { TrustBadges } from '@/components/ui/TrustBadges';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { PageTransition } from '@/components/ui/PageTransition';
+import govindImg from '@/assets/govind_shukla.png';
 import { teamData } from '@/data/teamData';
 import { faqData } from '@/data/faqData';
 
@@ -68,8 +69,8 @@ export const About: React.FC = () => {
             <ScrollReveal direction="left" className="lg:col-span-5 relative">
               <div className="rounded-3xl overflow-hidden shadow-xl border-4 border-white dark:border-slate-800">
                 <img
-                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop"
-                  alt="Founder Mr. Govind Shukla and team"
+                  src={govindImg}
+                  alt="Founder Mr. Govind Shukla"
                   className="w-full h-95 object-cover"
                 />
                 <div className="bg-[#001E40] dark:bg-slate-950 text-white p-4 text-left">
